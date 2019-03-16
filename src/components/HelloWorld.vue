@@ -3,7 +3,7 @@
     <vue-flux
       :options="fluxOptions"
       :images="fluxImages"
-      :transitions="fluxTransitions"
+      :transitions="fluxTransitions[5]"
       ref="slider">
     </vue-flux>
 
@@ -45,9 +45,71 @@ export default {
          'https://homepages.cae.wisc.edu/~ece533/images/serrano.png',
          'https://homepages.cae.wisc.edu/~ece533/images/tulips.png',
       ],
-      fluxTransitions: {
+      fluxTransitions0: {
             transitionTurn3d: Transitions.transitionTurn3d
-      }
+      },
+      fluxTransitions1: {
+            transitionBlinds2D: Transitions.transitionBlinds2D
+      },
+      fluxTransitions2: {
+            transitionBlinds3D: Transitions.transitionBlinds3D
+      },
+      fluxTransitions: [
+        {
+            transitionBlocks1: Transitions.transitionBlocks1
+        },
+        {
+            transitionBlocks2: Transitions.transitionBlocks2
+        },
+        {
+            transitionBook: Transitions.transitionBook
+        },
+        {
+            transitionCamera: Transitions.transitionCamera
+        },
+        {
+            transitionConcentric: Transitions.transitionConcentric
+        },
+        {
+            transitionCube: Transitions.transitionCube
+        },
+        {
+            transitionExplode: Transitions.transitionExplode
+        },
+        {
+            transitionFade: Transitions.transitionFade
+        },
+        {
+            transitionFall: Transitions.transitionFall
+        },
+        {
+            transitionKenburn: Transitions.transitionKenburn
+        },
+        {
+            transitionRound1: Transitions.transitionRound1
+        },
+        {
+            transitionRound2: Transitions.transitionRound2
+        },
+        {
+            transitionSlide: Transitions.transitionSlide
+        },
+        {
+            transitionSwipe: Transitions.transitionSwipe
+        },
+        {
+            transitionWarp: Transitions.transitionWarp
+        },
+        {
+            transitionWaterfall: Transitions.transitionWaterfall
+        },
+        {
+            transitionWave: Transitions.transitionWave
+        },
+        {
+            transitionZip: Transitions.transitionZip
+        },
+      ],
   })
 }
 </script>
