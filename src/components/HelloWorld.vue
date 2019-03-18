@@ -14,6 +14,7 @@
 <script>
 import { VueFlux, Transitions } from 'vue-flux';
 // import 'vue-flux/dist/vue-flux.css';
+import axios from "axios";
 
 export default {
   name: 'Snapbooth-Slider',
@@ -28,23 +29,7 @@ export default {
       fluxOptions: {
          autoplay: true
       },
-      fluxImages: [
-         'https://homepages.cae.wisc.edu/~ece533/images/airplane.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/arctichare.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/baboon.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/barbara.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/cat.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/fruits.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/frymire.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/girl.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/goldhill.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/monarch.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/mountain.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/peppers.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/pool.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/serrano.png',
-         'https://homepages.cae.wisc.edu/~ece533/images/tulips.png',
-      ],
+      fluxImages: [],
       fluxTransitions0: {
             transitionTurn3d: Transitions.transitionTurn3d
       },
@@ -110,7 +95,26 @@ export default {
             transitionZip: Transitions.transitionZip
         },
       ],
-  })
+  }),
+
+  mounted() {
+      axios({ method: "GET", "url": "https://jsonplaceholder.typicode.com/photos" }).then(result => {
+          var i = 0;
+          if (Array.isArray(result.data)) {
+              result.data.forEach(element => {
+                  i++;
+                  if ( i < 10 ) {
+                    this.fluxImages.push(element.thumbnailUrl);
+                  }
+                  
+              });
+          }
+          
+      }, error => {
+          console.error(error);
+      });
+  },
+  methods: { }
 }
 </script>
 
